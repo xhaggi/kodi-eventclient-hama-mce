@@ -11,12 +11,13 @@ The event client resolves the following issues:
 * The event client is started by udev under linux, and stopped when the device is disconnected.
 
 
-How to compile
+How to compile / install
 ----------------------------------------
 
 	$ apt-get install libusb-1.0-0-dev
 	$ make
 	$ make install
+	$ cp remote.xml ~/.xbmc/userdata/keymaps/
 	
 	
 Uninstall
