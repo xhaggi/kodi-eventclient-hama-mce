@@ -68,7 +68,7 @@ static bool disconnected = false;
 static bool quit = false;
 
 
-static void print_ir_code(const char *prefix, struct libusb_transfer *transfer)
+static void print_ir_code (const char *prefix, struct libusb_transfer *transfer)
 {
 	msg("** %s : ", prefix);
 	for (int i = 0; i < transfer->actual_length; i++)
@@ -83,6 +83,7 @@ static void xbmc_action (const char *action)
 	xbmc.SendACTION(action);
 }
 */
+
 static void xbmc_action_button (const char *btn)
 {
 	msg("## send action '%s' (button)\n", btn);
@@ -95,25 +96,13 @@ static void xbmc_key (const char *key)
 	xbmc.SendButton(key, "R1", BTN_NO_REPEAT);
 }
 
-static void xbmc_keyr(const char *key)
+static void xbmc_keyr (const char *key)
 {
 	msg("## send repeat key (R1) '%s'\n", key);
 	xbmc.SendButton(key, "R1", BTN_DOWN);
 }
-/*
-static void xbmc_key_kb (const char *key)
-{
-	msg("## send key (KB) '%s'\n", key);
-	xbmc.SendButton(key, "KB", BTN_NO_REPEAT);
-}
 
-static void xbmc_keyr_kb(const char *key)
-{
-	msg("## send repeat key (KB) '%s'\n", key);
-	xbmc.SendButton(key, "KB", BTN_DOWN);
-}
-*/
-static void xbmc_release_button()
+static void xbmc_release_button ()
 {
 	msg("## send key released\n");
 	xbmc.SendButton(0x01, BTN_UP);
@@ -122,13 +111,13 @@ static void xbmc_release_button()
 static void emit_left_click (void)
 {
 	msg("## send left click\n");
-	xbmc_action_button("select");
+	xbmc_action_button("contextmenu");
 }
 
 static void emit_right_click (void)
 {
 	msg("## send right click\n");
-	xbmc_action_button("contextmenu");
+	xbmc_action_button("title");
 }
 
 static void emit_info(void)
@@ -171,15 +160,15 @@ static void transfer0x81_cb (struct libusb_transfer *transfer)
 		{ 0x01, 0x10, false, xbmc_key, "mymusic" }, /* (blue) Music */
 		{ 0x01, 0x0c, false, xbmc_key, "mypictures" }, /* (green) Pictures */
 		{ 0x01, 0x08, false, xbmc_key, "myvideo" }, /* (red) Videos */
-		{ 0x01, 0x12, false, xbmc_key, "recordedtv" },
-		{ 0x01, 0x0a, false, xbmc_key, "guide" },
-		{ 0x01, 0x17, false, xbmc_key, "livetv" },
-		{ 0x03, 0x10, false, xbmc_key, "menu" },
+		{ 0x01, 0x12, false, xbmc_key, "recordedtv" }, /* grey button under yellow */
+		{ 0x01, 0x0a, false, xbmc_key, "guide" }, /* grey button under blue */
+		{ 0x01, 0x17, false, xbmc_key, "livetv" }, /* grey button under green */
+		{ 0x03, 0x10, false, xbmc_key, "menu" }, /* grey button under red */
 		{ 0x03, 0x05, false, xbmc_key, "reverse" },
 		{ 0x03, 0x09, false, xbmc_key, "forward" },
 		{ 0x01, 0x15, false, xbmc_key, "record" },
 		{ 0x00, 0x2a, false, xbmc_key, "back" },
-		{ 0x00, 0x28, false, xbmc_key, "select" },
+		{ 0x00, 0x28, false, xbmc_key, "select" }, /* ok botton */
 		{ 0x00, 0x4f, true, xbmc_keyr, "right" },
 		{ 0x00, 0x50, true, xbmc_keyr, "left" },
 		{ 0x00, 0x51, true, xbmc_keyr, "down" },
@@ -464,5 +453,3 @@ exit:
 
 	exit(exit_code);
 }
-
-/* vim:set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab: */
