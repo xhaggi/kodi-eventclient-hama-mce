@@ -17,12 +17,14 @@ How to compile / install
 	$ apt-get install libusb-1.0-0-dev
 	$ make
 	$ make install
+	$ update-rc.d xbmc_hama_mce defaults
 	$ cp remote.xml ~/.xbmc/userdata/keymaps/
 	
 	
 Uninstall
 ----------------------------------------
 	
+	$ update-rc.d -f xbmc_hama_mce remove
 	$ make uninstall
 
 
