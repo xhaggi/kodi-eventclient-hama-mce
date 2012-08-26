@@ -25,6 +25,13 @@ install:
 	install -Dm644 99_hama_mce.fdi $(DESTDIR)/etc/hal/fdi/preprobe/99_hama_mce.fdi
 	install -Dm644 remote.xml $(DESTDIR)/usr/share/xbmc/system/keymaps/remote.Hama.MCE.xml
 
+uninstall:
+	rm -f $(DESTDIR)/usr/bin/$(HAMAMCE_EXE)
+	rm -f $(DESTDIR)/etc/udev/rules.d/hama_mce.rules
+	rm -f $(DESTDIR)/etc/pm/sleep.d/99_hama_mce
+	rm -f $(DESTDIR)/etc/hal/fdi/preprobe/99_hama_mce.fdi
+	rm -f $(DESTDIR)/usr/share/xbmc/system/keymaps/remote.Hama.MCE.xml
+	
 $(HAMAMCE_EXE) : $(HAMAMCE_OBJS)
 	$(CXX) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(LIBS)
 
