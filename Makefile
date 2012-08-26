@@ -1,5 +1,5 @@
 HAMAMCE_OBJS = hama_mce.o
-HAMAMCE_EXE = xbmc-hama_mce
+HAMAMCE_EXE = xbmc_hama_mce
 LIBS = -lusb-1.0 -lrt
 
 ifeq ($(strip $(DEBUG)),Y)
@@ -23,7 +23,7 @@ install:
 	install -Dm644 hama_mce.rules $(DESTDIR)/etc/udev/rules.d/hama_mce.rules
 	install -Dm644 99_hama_mce $(DESTDIR)/etc/pm/sleep.d/99_hama_mce
 	install -Dm644 99_hama_mce.fdi $(DESTDIR)/etc/hal/fdi/preprobe/99_hama_mce.fdi
-	install -Dm644 hama_mce.xml $(DESTDIR)/usr/share/xbmc/system/keymaps/remote.Hama.MCE.xml
+	install -Dm644 remote.xml $(DESTDIR)/usr/share/xbmc/system/keymaps/remote.Hama.MCE.xml
 
 $(HAMAMCE_EXE) : $(HAMAMCE_OBJS)
 	$(CXX) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(LIBS)

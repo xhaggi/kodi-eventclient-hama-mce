@@ -4,4 +4,4 @@
 #  There is also a LIRC driver available for this, but some buttons are unusable then, since 
 #  they send mouse button events instead of key press events.
 #
-BUS=="usb", ACTION=="add", DRIVER=="usb", SYSFS{idVendor}=="05a4", SYSFS{idProduct}=="9881", RUN+="/usr/sbin/xbmc-hama_mce -d"
+BUS=="usb", ACTION=="add", DRIVER=="usb", SYSFS{idVendor}=="05a4", SYSFS{idProduct}=="9881", RUN+="/usr/bin/xbmc_hama_mce -d"
