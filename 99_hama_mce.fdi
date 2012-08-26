@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deviceinfo version="0.2">
+	<device>
+		<match key="usb.vendor_id" int="1444">
+			<match key="usb.product_id" int="39041">
+				<merge key="info.ignore" type="bool">true</merge>
+			</match>
+		</match>
+	</device>
+</deviceinfo>
+

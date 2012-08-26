@@ -1,0 +1,22 @@
+<!--
+  Add new action in home menu: Escape will return to full-screen video.
+  Thus users can cycle through parent menus and Fullscreen/Movie mode 
+  with a single key
+  (escape, or back on the remote control, if this is mapped to 'escape').
+  -->
+<keymap>
+	<global>
+		<remote>
+			<recordedtv>AspectRatio</recordedtv>
+			<menu>XBMC.EjectTray()</menu>
+			<record>Queue</record>
+			<start>XBMC.ActivateWindow(Home)</start>
+			<subtitle>ParentDir</subtitle>
+		</remote>
+	</global>
+	<Home>
+		<remote>
+			<back>FullScreen</back>
+		</remote>
+	</Home>
+</keymap>
