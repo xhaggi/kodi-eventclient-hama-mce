@@ -4,13 +4,14 @@
 # and start a new one.
 
 EVENT_CLIENT=/usr/bin/xbmc_hama_mce
+INITD_SCRIPT=/etc/init.d/xbmc_hama_mce
 
 case "$1" in
     resume|thaw)
         if [ -x ${EVENT_CLIENT} ]; then
-            killall -s SIGINT ${EVENT_CLIENT} || true
+            ${INITD_SCRIPT} stop || true
             sleep 2
-            ${EVENT_CLIENT} &
+            ${INITD_SCRIPT} start
         fi
     ;;
 esac

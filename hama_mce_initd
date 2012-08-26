@@ -1,0 +1,56 @@
+#!/bin/sh
+
+DAEMON=/usr/bin/xbmc_hama_mce
+DEAMON_OPTS="-d"
+PIDFILE=/var/run/xbmc_hama_mce.pid
+
+test -x ${DAEMON} || exit 0
+
+. /lib/lsb/init-functions
+
+
+get_status()
+{
+    if start-stop-daemon --start --startas $DAEMON --test \
+        --name $(basename $DAEMON) --pidfile $PIDFILE >/dev/null
+    then
+        echo " - is not running."
+        exit 3
+    else
+        echo " - is running."
+        exit 0
+    fi
+}
+
+
+case "$1" in
+  start)
+        log_daemon_msg "Starting XBMC HAMA MCE event client"
+        start-stop-daemon --start --quiet --background --pidfile ${PIDFILE} --make-pidfile --exec ${DAEMON} -- ${DEAMON_OPTS} 
+        log_end_msg $?
+    ;;
+  stop)
+        log_daemon_msg "Stopping XBMC HAMA MCE event client"
+        start-stop-daemon --stop --exec ${DAEMON}
+        log_end_msg $?
+    ;;
+  force-reload|restart)
+        $0 stop
+        $0 start
+    ;;
+  reload)
+        killall -HUP ${DAEMON}
+    ;;
+  status)
+        echo -n "Getting status of XBMC HAMA MCE event client"
+        get_status
+        ;;
+
+  *)  
+    echo "Usage: $0 {start|stop|restart|force-reload|status|reload}"
+    exit 1
+    ;;
+esac
+
+exit 0
+    

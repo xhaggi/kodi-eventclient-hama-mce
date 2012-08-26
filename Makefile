@@ -20,14 +20,16 @@ update:
 
 install:
 	install -Dm755 $(HAMAMCE_EXE) $(DESTDIR)/usr/bin/$(HAMAMCE_EXE)
-	install -Dm644 hama_mce.rules $(DESTDIR)/etc/udev/rules.d/99_hama_mce.rules
+	install -Dm755 hama_mce_initd $(DESTDIR)/etc/init.d/$(HAMAMCE_EXE)
+	#install -Dm644 hama_mce.rules $(DESTDIR)/etc/udev/rules.d/99_hama_mce.rules
 	install -Dm644 hama_mce_pm $(DESTDIR)/etc/pm/sleep.d/99_hama_mce
 	install -Dm644 hama_mce.fdi $(DESTDIR)/etc/hal/fdi/preprobe/99_hama_mce.fdi
 	install -Dm644 remote.xml $(DESTDIR)/usr/share/xbmc/system/keymaps/remote.Hama.MCE.xml
 
 uninstall:
 	rm -f $(DESTDIR)/usr/bin/$(HAMAMCE_EXE)
-	rm -f $(DESTDIR)/etc/udev/rules.d/hama_mce.rules
+	#rm -f $(DESTDIR)/etc/udev/rules.d/hama_mce.rules
+	rm -f $(DESTDIR)/etc/init.d/$(HAMAMCE_EXE)
 	rm -f $(DESTDIR)/etc/pm/sleep.d/99_hama_mce
 	rm -f $(DESTDIR)/etc/hal/fdi/preprobe/99_hama_mce.fdi
 	rm -f $(DESTDIR)/usr/share/xbmc/system/keymaps/remote.Hama.MCE.xml
