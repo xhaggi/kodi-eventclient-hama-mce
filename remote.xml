@@ -1,22 +1,50 @@
-<!--
-  Add new action in home menu: Escape will return to full-screen video.
-  Thus users can cycle through parent menus and Fullscreen/Movie mode 
-  with a single key
-  (escape, or back on the remote control, if this is mapped to 'escape').
-  -->
+<!-- Remote Hama MCE Mapping -->
 <keymap>
 	<global>
 		<remote>
+			<power>XBMC.ActivateWindow(ShutdownMenu)</power>
 			<recordedtv>AspectRatio</recordedtv>
 			<menu>XBMC.EjectTray()</menu>
 			<record>Queue</record>
 			<start>XBMC.ActivateWindow(Home)</start>
 			<subtitle>ParentDir</subtitle>
+			<title>ContextMenu</title>
 		</remote>
 	</global>
-	<Home>
+	<FullscreenVideo>
 		<remote>
-			<back>FullScreen</back>
+			<select>Playlist</select>
+			<back>SmallStepBack</back>
+			<star>XBMC.ActivateWindow(OSDVideoSettings)</star>
+			<hash>XBMC.ActivateWindow(OSDAudioSettings)</hash>
 		</remote>
-	</Home>
+	</FullscreenVideo>
+	<SlideShow>
+		<remote>
+			<back>PreviousMenu</back>
+		</remote>
+	</SlideShow>
+	<VideoOSD>
+		<remote>
+			<back>PreviousMenu</back>
+		</remote>
+	</VideoOSD>
+	<TV>
+		<remote>
+			<mytv>Yellow</mytv>
+			<mymusic>Blue</mymusic>
+			<mypictures>Green</mypictures>
+			<myvideo>Red</myvideo>
+			<back>PreviousMenu</back>
+		</remote>
+	</TV>
+	<Teletext>
+		<remote>
+			<mytv>Yellow</mytv>
+			<mymusic>Blue</mymusic>
+			<mypictures>Green</mypictures>
+			<myvideo>Red</myvideo>
+			<back>PreviousMenu</back>
+		</remote>
+	</Teletext>
 </keymap>
