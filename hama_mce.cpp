@@ -102,19 +102,19 @@ static void xbmc_release_button ()
 
 static void emit_left_click (void)
 {
-  msg("## send left click\n");
-  xbmc_action_button("contextmenu");
+  msg("## catched button mouse left\n");
+  xbmc_key("title");
 }
 
 static void emit_right_click (void)
 {
-  msg("## send right click\n");
-  xbmc_action_button("title");
+  msg("## catched button mouse right\n");
+  xbmc_action_button("contextmenu");
 }
 
 static void emit_info(void)
 {
-  msg("## send info click\n");
+  msg("## catched button info\n");
   xbmc_key("info");
 }
 
@@ -340,7 +340,7 @@ int main (int argc, char **argv)
               {0, 0, 0, 0}
           };
 
-      c = getopt_long(argc, argv, "hvdf", long_options, NULL);
+      c = getopt_long(argc, argv, "hvd", long_options, NULL);
       if (c == -1)
         break;
       switch (c) {
@@ -351,10 +351,6 @@ int main (int argc, char **argv)
         msg("HAMA MCE remote event client v%s for XBMC\n", VERSION);
         exit(EXIT_SUCCESS);
       case 'd':
-        daemonize = true;
-        break;
-      case 'f':
-        err("%s: The --fork argument is deprectiated, change it to -d or --daemon\n", argv[0]);
         daemonize = true;
         break;
       default:
