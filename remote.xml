@@ -14,7 +14,7 @@
 	<FullscreenVideo>
 		<remote>
 			<select>Playlist</select>
-			<back>SmallStepBack</back>
+			<back>PreviousMenu</back>
 			<star>XBMC.ActivateWindow(OSDVideoSettings)</star>
 			<hash>XBMC.ActivateWindow(OSDAudioSettings)</hash>
 		</remote>
