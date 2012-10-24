@@ -249,11 +249,13 @@ static void transfer0x82_cb (struct libusb_transfer *transfer)
       return;
   }
   if (transfer->status == LIBUSB_TRANSFER_TIMED_OUT) {
+      /*
       if (rclick_pending == 1) {
           print_ir_code("info", transfer);
           rclick_pending = 0;
           emit_info();
       }
+      */
       goto done;
   }
   if (transfer->actual_length == 5) {
