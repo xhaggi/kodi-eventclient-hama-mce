@@ -188,7 +188,7 @@ static void transfer0x81_cb (struct libusb_transfer *transfer)
       { 0x08, 0x00, false, NULL, "start [discard]" }, /* discard - start*/
       { 0x04, 0x00, false, NULL, "Alt [discard]" }, /* discard - hash, close*/
       { 0x03, 0x00, false, NULL, "Shift [discard]" }, /* discard - mytv, menu, rewind, fastforward*/
-      { 0x01, 0x00, false, NULL, "Ctrl [discard]" }, /* discard - key down */
+      { 0x01, 0x00, false, NULL, "Ctrl [discard]" } /* discard - key down */
   };
   static bool repeating = false;
   if (transfer->status == LIBUSB_TRANSFER_NO_DEVICE) {
@@ -234,13 +234,13 @@ static void transfer0x82_cb (struct libusb_transfer *transfer)
   } translation_table [] = {
       { { 0x03, 0x02, 0x55, 0x55, 0x55 }, false, xbmc_key, "power" },
       { { 0x02, 0x02, 0x00, 0x00, 0x55 }, false, xbmc_key, "display" },
-      { { 0x02, 0x80, 0x00, 0x00, 0x55 }, false, xbmc_key, "skipminus" },
+      { { 0x02, (char)0x80, 0x00, 0x00, 0x55 }, false, xbmc_key, "skipminus" },
       { { 0x02, 0x00, 0x02, 0x00, 0x55 }, false, xbmc_key, "skipplus" },
       { { 0x02, 0x00, 0x00, 0x01, 0x55 }, false, xbmc_key, "stop" },
       { { 0x02, 0x00, 0x00, 0x02, 0x55 }, false, xbmc_key, "pause" },
       { { 0x02, 0x00, 0x01, 0x00, 0x55 }, false, xbmc_key, "mute" },
       { { 0x02, 0x10, 0x00, 0x00, 0x55 }, true, xbmc_keyr, "volumeplus" },
-      { { 0x02, 0x00, 0x10, 0x00, 0x55 }, true, xbmc_keyr, "volumeminus" },
+      { { 0x02, 0x00, 0x10, 0x00, 0x55 }, true, xbmc_keyr, "volumeminus" }
   };
   static bool repeating = false;
   static int rclick_pending = 0;
@@ -287,6 +287,7 @@ static void transfer0x82_cb (struct libusb_transfer *transfer)
           else if (transfer->buffer[1] == 0x02) {
               print_ir_code("catching right click/info", transfer);
               rclick_pending = 2;
+              emit_info();
           }
 
           goto done;
