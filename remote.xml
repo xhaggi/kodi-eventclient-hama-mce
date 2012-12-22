@@ -9,21 +9,26 @@
 			<start>XBMC.ActivateWindow(Home)</start>
 			<subtitle>ParentDir</subtitle>
 			<title>ContextMenu</title>
-            <record>XBMC.PlayerControl(Record)</record>
+			<record>XBMC.PlayerControl(Record)</record>
 		</remote>
 	</global>
 	<FullscreenVideo>
 		<remote>
 			<select>Playlist</select>
 			<back>PreviousMenu</back>
-            <volumeplus>VolumeUp</volumeplus>
-            <volumeminus>VolumeDown</volumeminus>
-            <pageplus>BigStepForward</pageplus>
-            <pageminus>BigStepBack</pageminus>
+			<volumeplus>VolumeUp</volumeplus>
+			<volumeminus>VolumeDown</volumeminus>
+			<pageplus>BigStepForward</pageplus>
+			<pageminus>BigStepBack</pageminus>
 			<star>XBMC.ActivateWindow(OSDVideoSettings)</star>
 			<hash>XBMC.ActivateWindow(OSDAudioSettings)</hash>
 		</remote>
 	</FullscreenVideo>
+	<Visualisation>
+		<remote>
+			<back>PreviousMenu</back>
+		</remote>
+	</Visualisation>
 	<SlideShow>
 		<remote>
 			<back>PreviousMenu</back>
