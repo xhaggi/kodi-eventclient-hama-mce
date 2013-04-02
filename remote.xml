@@ -24,6 +24,16 @@
 			<hash>XBMC.ActivateWindow(OSDAudioSettings)</hash>
 		</remote>
 	</FullscreenVideo>
+	<FullscreenLiveTV>
+		<remote>
+	    	<pageplus>ChannelUp</pageplus>
+	    	<pageminus>ChannelDown</pageminus>
+			<left>StepBack</left>
+			<right>StepForward</right>
+			<up>BigStepForward</up>
+			<down>BigStepBack</down>
+	  	</remote>
+	</FullscreenLiveTV>
 	<Visualisation>
 		<remote>
 			<back>PreviousMenu</back>
