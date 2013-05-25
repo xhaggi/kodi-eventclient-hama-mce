@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- Remote Hama MCE Mapping -->
 <keymap>
 	<global>
@@ -24,15 +25,23 @@
 			<hash>XBMC.ActivateWindow(OSDAudioSettings)</hash>
 		</remote>
 	</FullscreenVideo>
+	<FullscreenInfo>
+		<remote>
+			<left>Left</left>
+			<right>Right</right>
+			<up>Up</up>
+			<down>Down</down>
+		</remote>
+	</FullscreenInfo>
 	<FullscreenLiveTV>
 		<remote>
-	    	<pageplus>ChannelUp</pageplus>
-	    	<pageminus>ChannelDown</pageminus>
+			<pageplus>ChannelUp</pageplus>
+			<pageminus>ChannelDown</pageminus>
 			<left>StepBack</left>
 			<right>StepForward</right>
 			<up>BigStepForward</up>
 			<down>BigStepBack</down>
-	  	</remote>
+		</remote>
 	</FullscreenLiveTV>
 	<Visualisation>
 		<remote>
