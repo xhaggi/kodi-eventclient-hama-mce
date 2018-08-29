@@ -3,8 +3,8 @@
 # When the computer comes out of hibernate/suspend kill the old event client
 # and start a new one.
 
-EVENT_CLIENT=/usr/bin/xbmc_hama_mce
-INITD_SCRIPT=/etc/init.d/xbmc_hama_mce
+EVENT_CLIENT=/usr/bin/kodi_hama_mce
+INITD_SCRIPT=/etc/init.d/kodi_hama_mce
 
 case "$1" in
     resume|thaw)

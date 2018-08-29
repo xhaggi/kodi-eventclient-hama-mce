@@ -1,7 +1,7 @@
 #
-#  start the hama_mce HID parser/keycode translator for XBMC
+#  Start the Kodi event client for Hama MCE Remote Control
 #
 #  There is also a LIRC driver available for this, but some buttons are unusable then, since 
 #  they send mouse button events instead of key press events.
 #
-SUBSYSTEM=="usb", ACTION=="add", DRIVER=="usb", ATTR{idVendor}=="05a4", ATTR{idProduct}=="9881", RUN+="/usr/bin/xbmc_hama_mce -d"
+SUBSYSTEM=="usb", ACTION=="add", DRIVER=="usb", ATTR{idVendor}=="05a4", ATTR{idProduct}=="9881", RUN+="/usr/bin/kodi_hama_mce -d"

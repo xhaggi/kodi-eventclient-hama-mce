@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, AaYJFG - XBMC community
+ * Copyright (c) 2018, xhaggi, AaYJFG
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without

@@ -3,14 +3,14 @@
 <keymap>
 	<global>
 		<remote>
-			<power>XBMC.ActivateWindow(ShutdownMenu)</power>
+			<power>ActivateWindow(ShutdownMenu)</power>
 			<recordedtv>AspectRatio</recordedtv>
-			<menu>XBMC.EjectTray()</menu>
+			<menu>EjectTray()</menu>
 			<record>Queue</record>
-			<start>XBMC.ActivateWindow(Home)</start>
+			<start>ActivateWindow(Home)</start>
 			<subtitle>ParentDir</subtitle>
 			<title>ContextMenu</title>
-			<record>XBMC.PlayerControl(Record)</record>
+			<record>PlayerControl(Record)</record>
 		</remote>
 	</global>
 	<FullscreenVideo>
@@ -21,8 +21,8 @@
 			<volumeminus>VolumeDown</volumeminus>
 			<pageplus>BigStepForward</pageplus>
 			<pageminus>BigStepBack</pageminus>
-			<star>XBMC.ActivateWindow(OSDVideoSettings)</star>
-			<hash>XBMC.ActivateWindow(OSDAudioSettings)</hash>
+			<star>ActivateWindow(OSDVideoSettings)</star>
+			<hash>ActivateWindow(OSDAudioSettings)</hash>
 		</remote>
 	</FullscreenVideo>
 	<FullscreenInfo>

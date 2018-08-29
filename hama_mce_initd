@@ -1,13 +1,20 @@
 #!/bin/sh
+### BEGIN INIT INFO
+# Provides:          kodi_hama_mce
+# Required-Start:    $local_fs $syslog
+# Required-Stop:     
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Kodi event client for Hama MCE Remote Control
+### END INIT INFO
 
-DAEMON=/usr/bin/xbmc_hama_mce
+DAEMON=/usr/bin/kodi_hama_mce
 DEAMON_OPTS="-d"
-PIDFILE=/var/run/xbmc_hama_mce.pid
+PIDFILE=/var/run/kodi_hama_mce.pid
 
 test -x ${DAEMON} || exit 0
 
 . /lib/lsb/init-functions
-
 
 get_status()
 {
@@ -22,15 +29,14 @@ get_status()
     fi
 }
 
-
 case "$1" in
   start)
-        log_daemon_msg "Starting XBMC HAMA MCE event client"
+        log_daemon_msg "Starting Kodi event client for Hama MCE Remote Control"
         start-stop-daemon --start --quiet --background --pidfile ${PIDFILE} --make-pidfile --exec ${DAEMON} -- ${DEAMON_OPTS} 
         log_end_msg $?
     ;;
   stop)
-        log_daemon_msg "Stopping XBMC HAMA MCE event client"
+        log_daemon_msg "Stopping Kodi event client for Hama MCE Remote Control"
         start-stop-daemon --stop --exec ${DAEMON}
         log_end_msg $?
     ;;
@@ -42,7 +48,7 @@ case "$1" in
         killall -HUP ${DAEMON}
     ;;
   status)
-        echo -n "Getting status of XBMC HAMA MCE event client"
+        echo -n "Getting status of Kodi event client for Hama MCE Remote Control"
         get_status
         ;;
 
