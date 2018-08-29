@@ -1,23 +1,24 @@
-#ifndef __XBMC_CLIENT_H__
-#define __XBMC_CLIENT_H__
-
 /*
- *  Copyright (C) 2008-2009 Team XBMC http://www.xbmc.org
+ *      Copyright (C) 2008-2015 Team Kodi
+ *      http://kodi.tv
  *
- *  This program is free software; you can redistribute it and/or modify
+ *  This Program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
+ *  the Free Software Foundation; either version 2, or (at your option)
+ *  any later version.
  *
- *  This program is distributed in the hope that it will be useful,
+ *  This Program is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  *  GNU General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License along
- *  with this program; if not, write to the Free Software Foundation, Inc.,
- *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ *  You should have received a copy of the GNU General Public License
+ *  along with Kodi; see the file COPYING.  If not, see
+ *  <http://www.gnu.org/licenses/>.
+ *
  */
+
+#pragma once
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -102,12 +103,12 @@ public:
   CAddress(const char *Address, int Port = STD_PORT)
   {
     m_Addr.sin_port = htons(Port);
-    
+
     struct hostent *h;
     if (Address == NULL || (h=gethostbyname(Address)) == NULL)
     {
         if (Address != NULL)
-			printf("Error: Get host by name\n");
+      printf("Error: Get host by name\n");
 
         m_Addr.sin_addr.s_addr  = INADDR_ANY;
         m_Addr.sin_family       = AF_INET;
@@ -200,9 +201,9 @@ public:
 
   bool Send(int Socket, CAddress &Addr, unsigned int UID = XBMCClientUtils::GetUniqueIdentifier())
   {
-    if (m_Payload.size() == 0)
+    if (m_Payload.empty())
       ConstructPayload();
-    bool SendSuccessfull = true;
+    bool SendSuccessful = true;
     int NbrOfPackages = (m_Payload.size() / MAX_PAYLOAD_SIZE) + 1;
     int Send = 0;
     int Sent = 0;
@@ -232,11 +233,11 @@ public:
       int rtn = sendto(Socket, t, (32 + Send), 0, Addr.GetAddress(), sizeof(struct sockaddr));
 
       if (rtn != (32 + Send))
-        SendSuccessfull = false;
+        SendSuccessful = false;
 
       Sent += Send;
     }
-    return SendSuccessfull;
+    return SendSuccessful;
   }
 protected:
   char            m_Header[HEADER_SIZE];
@@ -328,7 +329,7 @@ public:
 
     unsigned int len = strlen(DevName);
     for (unsigned int i = 0; i < len; i++)
-      m_DeviceName.push_back(DevName[i]);    
+      m_DeviceName.push_back(DevName[i]);
 
     m_IconType = IconType;
 
@@ -361,8 +362,7 @@ public:
   virtual ~CPacketHELO()
   {
     m_DeviceName.clear();
-    if (m_IconData)
-      free(m_IconData);
+    delete[] m_IconData;
   }
 };
 
@@ -450,8 +450,7 @@ public:
   {
     m_Title.clear();
     m_Message.clear();
-    if (m_IconData)
-      free(m_IconData);
+    delete[] m_IconData;
   }
 };
 
@@ -648,7 +647,7 @@ public:
     m_Payload.push_back(((m_Y & 0xff00) >> 8));
     m_Payload.push_back( (m_Y & 0x00ff));
   }
-  
+
   virtual ~CPacketMOUSE()
   { }
 };
@@ -693,7 +692,7 @@ public:
 
     m_Payload.push_back('\0');
   }
-  
+
   virtual ~CPacketLOG()
   { }
 };
@@ -729,7 +728,7 @@ public:
 
     m_Payload.push_back('\0');
   }
-  
+
   virtual ~CPacketACTION()
   { }
 };
@@ -771,15 +770,6 @@ public:
 
     CPacketHELO helo(DevName, IconType, IconFile);
     helo.Send(m_Socket, m_Addr, m_UID);
-  }
-
-  void SendBYE()
-  {
-      if (m_Socket < 0)
-          return;
-
-      CPacketBYE bye;
-      bye.Send(m_Socket, m_Addr, m_UID);
   }
 
   void SendButton(const char *Button, const char *DeviceMap, unsigned short Flags, unsigned short Amount = 0)
@@ -836,5 +826,3 @@ public:
     action.Send(m_Socket, m_Addr, m_UID);
   }
 };
-
-#endif

@@ -418,7 +418,6 @@ int main (int argc, char **argv)
       msg("Closing HAMA MCE Remote\n");
       xbmc.SendNOTIFICATION("Closing", "HAMA MCE Remote", ICON_NONE);
   }
-  xbmc.SendBYE();
 
   libusb_free_transfer(transfer0x81);
   libusb_free_transfer(transfer0x82);
