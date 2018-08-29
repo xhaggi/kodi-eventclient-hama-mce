@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Remote Hama MCE Mapping -->
+<!-- Hama MCE Remote Control Mapping -->
 <keymap>
 	<global>
 		<remote>
@@ -15,7 +15,6 @@
 	</global>
 	<FullscreenVideo>
 		<remote>
-			<select>Playlist</select>
 			<back>PreviousMenu</back>
 			<volumeplus>VolumeUp</volumeplus>
 			<volumeminus>VolumeDown</volumeminus>
@@ -35,6 +34,7 @@
 	</FullscreenInfo>
 	<FullscreenLiveTV>
 		<remote>
+			<select>Playlist</select>
 			<pageplus>ChannelUp</pageplus>
 			<pageminus>ChannelDown</pageminus>
 			<left>StepBack</left>
@@ -43,6 +43,17 @@
 			<down>BigStepBack</down>
 		</remote>
 	</FullscreenLiveTV>
+	<FullscreenLiveRadio>
+		<remote>
+			<select>Playlist</select>
+			<pageplus>ChannelUp</pageplus>
+			<pageminus>ChannelDown</pageminus>
+			<left>StepBack</left>
+			<right>StepForward</right>
+			<up>BigStepForward</up>
+			<down>BigStepBack</down>
+		</remote>
+	</FullscreenLiveRadio>
 	<Visualisation>
 		<remote>
 			<back>PreviousMenu</back>
